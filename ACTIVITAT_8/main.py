@@ -1,16 +1,18 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Response
 from pydantic import BaseModel
 
 app = FastAPI()
 
 items = {"arman": "arman"}
 
+@app.get("/items/{item_id}", status_code=404)
+async def read_item(item_id: str, response: Response):
+    item = items.get(item_id)
+    if item:
+        return {"item_id": item_id} 
+    response.status_code = 404
+    return {"error": "Item not found"}
 
-@app.get("/items/{item_id}")
-async def read_item(item_id: str):
-    if item_id not in items:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return {"item": items[item_id]}
 
 class Item(BaseModel):
     name: str
