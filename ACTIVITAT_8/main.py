@@ -3,9 +3,14 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+items = {"arman": "arman"}
+
+
 @app.get("/items/{item_id}")
-async def read_item(item_id):
-    return {"item_id": item_id}
+async def read_item(item_id: str):
+    if item_id not in items:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return {"item": items[item_id]}
 
 class Item(BaseModel):
     name: str
