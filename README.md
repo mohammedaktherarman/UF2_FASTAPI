@@ -1,7 +1,5 @@
-# UF2_FASTAPI
-
-<p>Prova Body-Nested Models<p>
-
-![alt text](/captures/image-1.png)
+Prova punt 6 endpoint /users/:
 
 ![alt text](/captures/image.png)
+
+![alt text](/captures/image-1.png)
