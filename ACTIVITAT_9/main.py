@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from schema import User
-from read import read_users
+from schemas.schema import User
+from crud.read import read_users
 
 app = FastAPI()
 

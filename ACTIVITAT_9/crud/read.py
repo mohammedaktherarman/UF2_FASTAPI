@@ -1,4 +1,4 @@
-from connection import conexio
+from db_connect.connection import conexio
 import psycopg2
 
 
