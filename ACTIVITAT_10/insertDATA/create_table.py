@@ -1,5 +1,8 @@
 import psycopg2
-from db_connect.connection import conexio
+from connection import conexio
+
+
+# Funcio per la creacio de la tabla 
 
 def crearTabla():
     try:
@@ -8,7 +11,7 @@ def crearTabla():
         cursor = conn.cursor()
 
         sql = '''CREATE TABLE PARAULES(
-                        word VARCHAR(255) NOT NULL PRIMARY KEY, 
+                        word VARCHAR(255) NOT NULL, 
                         theme VARCHAR(255) NOT NULL
         )'''
 
