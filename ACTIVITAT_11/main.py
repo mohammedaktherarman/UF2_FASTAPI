@@ -1,6 +1,5 @@
-import mysql.connector
 from connection import db_client
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -14,7 +13,7 @@ def pillafrase(Idioma: str):
     finally:
         conn.close()
 
-    return frase[0][0] if frase else None
+    return frase
 
 @app.get("/frase/{Idioma}")
 def show_alumne(Idioma: str):  
