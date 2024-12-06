@@ -35,3 +35,19 @@ def intents(partida_id: int):
         conn.close()
 
     return intentos  
+
+def abecedari(idioma: str):
+    try:
+        conn = db_client()
+        cur = conn.cursor()
+        
+        cur.execute("SELECT Abecedari FROM pantalla WHERE Idioma = %s", (idioma,))
+        resultat = cur.fetchone()
+
+        if resultat:
+            abecedari = resultat[0]
+
+    finally:
+        conn.close()
+
+    return abecedari
