@@ -8,6 +8,7 @@ def pillafrase(Idioma: str):
 
         cur.execute("SELECT frase FROM pantalla WHERE Idioma = %s", (Idioma,))
         frase = cur.fetchall()  
+        
     finally:
         conn.close()
 
@@ -24,10 +25,7 @@ def intents(partida_id: int):
         )
         conn.commit()
 
-        cur.execute(
-            "SELECT intents FROM partida WHERE partida_id = %s",
-            (partida_id,)
-        )
+        cur.execute("SELECT intents FROM partida WHERE partida_id = %s", (partida_id,))
 
         intentos = cur.fetchone()
 
@@ -51,3 +49,17 @@ def abecedari(idioma: str):
         conn.close()
 
     return abecedari
+
+def jugador(jugador_id: int):
+    try:
+        conn = db_client()
+        cur = conn.cursor()
+
+        cur.execute("""SELECT Nom, Total_partides, Partides_ganadas, Partides_mes_punts, Punts_partida_actual FROM jugador WHERE ID = %s """, (jugador_id,))
+        
+        resultat = cur.fetchone()
+
+    finally:
+        conn.close()
+
+    return resultat
